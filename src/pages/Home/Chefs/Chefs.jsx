@@ -1,7 +1,9 @@
 import { FaThumbsUp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Chefs = ({ singleData }) => {
-  const { picture, name, experience_years, total_recipe, likes } = singleData;
+  const { picture, name, experience_years, total_recipe, likes, id } =
+    singleData;
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
@@ -19,7 +21,9 @@ const Chefs = ({ singleData }) => {
           <div className="flex justify-center items-center gap-3">
             <FaThumbsUp></FaThumbsUp> {likes}
           </div>
-          <div className="badge badge-primary p-4">View Recipes</div>
+          <Link to={`/details/${id}`} className="badge badge-primary p-4">
+            View Recipes
+          </Link>
         </div>
       </div>
     </div>
