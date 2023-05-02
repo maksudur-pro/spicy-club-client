@@ -13,7 +13,7 @@ const Chefs = ({ singleData }) => {
         <h2 className="card-title">
           {name}
           <div className="badge badge-secondary">
-            {experience_years} years experience
+            <p className="text-xs">{experience_years} years experience</p>
           </div>
         </h2>
         <p>Total recipe : {total_recipe}</p>
