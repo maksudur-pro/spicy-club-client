@@ -2,11 +2,8 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="lg:flex my-container lg:flex-row-reverse justify-center items-center p-7 mx-auto">
-      <img
-        src="https://i.ibb.co/H7s5rnR/P3-OLGJ1-copy-1.png"
-        className="rounded-lg"
-      />
+    <div className="lg:flex my-container justify-center items-center p-7 mx-auto">
+      <img src="https://pngimg.com/d/chef_PNG10.png" className="rounded-lg" />
       <div>
         <h1 className="text-5xl font-bold">Box Office News!</h1>
         <p className="py-6">

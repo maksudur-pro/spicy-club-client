@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   return (
     <div className="navbar bg-base-100 my-container">
       <div className="navbar-start">
@@ -41,7 +51,7 @@ const Header = () => {
             </NavLink>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Spicy club</a>
+        <a className="btn btn-ghost normal-case text-xl ">Spicy club</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-4">
@@ -62,10 +72,25 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a href="">
+        {user ? (
+          <img
+            title={user?.displayName}
+            src={`${user?.photoURL}`}
+            className="w-10 h-10 rounded-full"
+            alt=""
+          />
+        ) : (
           <FaUserAlt></FaUserAlt>
-        </a>
-        <a>Login</a>
+        )}
+        {user ? (
+          <button onClick={handleLogout} className="btn btn-sm btn-ghost">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-sm btn-ghost">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );
