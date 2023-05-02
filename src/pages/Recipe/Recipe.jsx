@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaRegBookmark, FaBookmark } from "react-icons/fa";
+import { FaRegBookmark, FaBookmark, FaRegStar, FaStar } from "react-icons/fa";
+import Rating from "react-rating";
 
 const Recipe = ({ recipe }) => {
   const [block, setBlock] = useState(true);
@@ -20,8 +21,15 @@ const Recipe = ({ recipe }) => {
         <h4>{recipe_name}</h4>
         <p className="p-0">Ingredients: {ingredients}</p>
         <p>Cooking method: {cooking_method}</p>
-        <div>
-          <p>{rating}</p>
+        <div className="flex items-center">
+          <Rating
+            readonly
+            placeholderRating={rating}
+            emptySymbol={<FaRegStar />}
+            placeholderSymbol={<FaStar className="text-warning" />}
+            fullSymbol={<FaStar />}
+          />
+          <span>{rating}</span>
         </div>
       </div>
     </div>
