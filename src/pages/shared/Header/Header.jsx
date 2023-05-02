@@ -1,5 +1,6 @@
 import React from "react";
 import { FaUserAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -24,24 +25,18 @@ const Header = () => {
           <ul
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <a>Home</a>
-            </li>
-            <li>
-              <a>Blog</a>
-            </li>
+            <Link to="/">Home</Link>
+            <Link to="/blog">Blog</Link>
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl">Spicy club</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Home</a>
-          </li>
-          <li>
-            <a>Blog</a>
-          </li>
+          <Link to="/">Home</Link>
+          <Link className="ml-4" to="/blog">
+            Blog
+          </Link>
         </ul>
       </div>
       <div className="navbar-end">
