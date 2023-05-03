@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { FaRegBookmark, FaBookmark, FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
+import Swal from "sweetalert2";
 
 const Recipe = ({ recipe }) => {
-  const [block, setBlock] = useState(true);
+  const [bookmark, setBookmark] = useState(true);
   const { recipe_name, ingredients, cooking_method, rating } = recipe;
 
+  const handleBookmark = () => {
+    if (bookmark) {
+      setBookmark(false);
+      return Swal.fire("Bookmarked Successfully!", " ", "success");
+    }
+  };
   return (
     <div className="card my-container w-96 bg-base-100 shadow-xl">
       <div className="card-body">
         <div className="card-actions justify-end">
-          <button onClick={() => setBlock(false)} disabled={false}>
-            {block ? (
+          <button onClick={handleBookmark} disabled={false}>
+            {bookmark ? (
               <FaRegBookmark></FaRegBookmark>
             ) : (
               <FaBookmark></FaBookmark>
