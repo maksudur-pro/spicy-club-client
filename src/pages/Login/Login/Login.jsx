@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, githubAuth, googleAuth } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [error, setError] = useState("");
 
   const from = location.state?.from?.pathname || "/";
 
@@ -20,9 +22,39 @@ const Login = () => {
         console.log(loggedIn);
         navigate(from, { replace: true });
         form.reset();
+        setError("");
       })
       .catch((error) => {
-        console.log(error.message);
+        setError(error.message);
+      });
+  };
+
+  // google signin
+
+  const handleGoogle = () => {
+    googleAuth()
+      .then((result) => {
+        const googleLogged = result.user;
+        navigate(from, { replace: true });
+        console.log(googleLogged);
+        setError("");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
+  // github login
+  const handleGithub = () => {
+    githubAuth()
+      .then((result) => {
+        const githubLogged = result.user;
+        navigate(from, { replace: true });
+        console.log(githubLogged);
+        setError("");
+      })
+      .catch((error) => {
+        setError(error.message);
       });
   };
   return (
@@ -58,13 +90,21 @@ const Login = () => {
                 <Link className="link" to="/register">
                   Register
                 </Link>
+                <p className="text-red-500">{error}</p>
               </div>
             </label>
           </div>
-          <div className="form-control mt-6">
+          <div className="form-control mt-6 gap-2">
             <button className="btn btn-primary">Login</button>
+            <p className="text-center font-bold">OR</p>
           </div>
         </form>
+        <button onClick={handleGoogle} className="btn btn-outline">
+          <FaGoogle className="mx-2 text-blue-500" /> Login with Google{" "}
+        </button>
+        <button onClick={handleGithub} className="btn mt-5 btn-outline">
+          <FaGithub className="mx-2 text-gray-500" /> Login with Github
+        </button>
       </div>
     </div>
   );
