@@ -2,15 +2,15 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
+console.log("environment variable", import.meta.env.VITE_APIKEY);
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAverdFEkOPEbNqGiPRhNLifrJxvFe5X5I",
-  authDomain: "spicy-club-firebase-auth.firebaseapp.com",
-  projectId: "spicy-club-firebase-auth",
-  storageBucket: "spicy-club-firebase-auth.appspot.com",
-  messagingSenderId: "459124999929",
-  appId: "1:459124999929:web:50326da261988e2b330428",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
