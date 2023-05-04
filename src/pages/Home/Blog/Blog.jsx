@@ -76,7 +76,11 @@ const Blog = () => {
       </div>
       <div className="flex justify-center">
         <Pdf targetRef={ref} options={options} filename="blogs.pdf">
-          {({ toPdf }) => <button onClick={toPdf}>Download Pdf</button>}
+          {({ toPdf }) => (
+            <button className="btn btn-primary" onClick={toPdf}>
+              Download Pdf
+            </button>
+          )}
         </Pdf>
       </div>
     </div>
