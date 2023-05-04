@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -18,6 +19,7 @@ const Register = () => {
       .then((result) => {
         const createdUser = result.user;
         form.reset();
+        Swal.fire("Register Successfully!", " ", "success");
         updateUserData(result.user, name, photo);
       })
       .catch((error) => {
