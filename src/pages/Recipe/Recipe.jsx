@@ -41,14 +41,11 @@ const Recipe = ({ recipe }) => {
           {cooking_method}
         </p>
         <div className="flex items-center">
-          {/* <Rating
-            readonly
-            placeholderRating={rating}
-            emptySymbol={<FaRegStar />}
-            placeholderSymbol={<FaStar className="text-warning" />}
-            fullSymbol={<FaStar />}
-          /> */}
-          <Rating style={{ maxWidth: 150 }} value={rating} readOnly />
+          <Rating
+            style={{ maxWidth: 150 }}
+            value={Math.round(rating || 0)}
+            readOnly
+          />
           <span className="ml-2">{rating}</span>
         </div>
       </div>
