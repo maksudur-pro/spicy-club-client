@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaRegBookmark, FaBookmark, FaRegStar, FaStar } from "react-icons/fa";
-import Rating from "react-rating";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 import Swal from "sweetalert2";
 
 const Recipe = ({ recipe }) => {
@@ -40,14 +41,15 @@ const Recipe = ({ recipe }) => {
           {cooking_method}
         </p>
         <div className="flex items-center">
-          <Rating
+          {/* <Rating
             readonly
             placeholderRating={rating}
             emptySymbol={<FaRegStar />}
             placeholderSymbol={<FaStar className="text-warning" />}
             fullSymbol={<FaStar />}
-          />
-          <span>{rating}</span>
+          /> */}
+          <Rating style={{ maxWidth: 150 }} value={rating} readOnly />
+          <span className="ml-2">{rating}</span>
         </div>
       </div>
     </div>

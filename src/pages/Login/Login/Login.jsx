@@ -19,7 +19,6 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedIn = result.user;
-        console.log(loggedIn);
         navigate(from, { replace: true });
         form.reset();
         setError("");
@@ -36,7 +35,6 @@ const Login = () => {
       .then((result) => {
         const googleLogged = result.user;
         navigate(from, { replace: true });
-        console.log(googleLogged);
         setError("");
       })
       .catch((error) => {
@@ -50,7 +48,6 @@ const Login = () => {
       .then((result) => {
         const githubLogged = result.user;
         navigate(from, { replace: true });
-        console.log(githubLogged);
         setError("");
       })
       .catch((error) => {

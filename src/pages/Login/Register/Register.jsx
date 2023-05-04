@@ -14,11 +14,9 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     setError("");
-    // console.log(email, name, password, photo);
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
-        console.log(createdUser);
         form.reset();
         updateUserData(result.user, name, photo);
       })

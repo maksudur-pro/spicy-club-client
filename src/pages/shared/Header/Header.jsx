@@ -9,9 +9,7 @@ const Header = () => {
   const handleLogout = () => {
     logOut()
       .then(() => {})
-      .catch((error) => {
-        console.log(error.message);
-      });
+      .catch(() => {});
   };
   return (
     <div className="navbar bg-base-100 my-container">
