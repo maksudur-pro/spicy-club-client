@@ -14,7 +14,7 @@ const PrivateRoute = ({ children }) => {
           className="flex justify-center items-center h-full"
           height={762}>
           <img
-            class="h-16 w-16"
+            className="h-16 w-16"
             src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
             alt=""
           />

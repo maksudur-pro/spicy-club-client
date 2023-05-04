@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Banner from "../Banner/Banner";
 import Chefs from "../Chefs/Chefs";
+import Experience from "../../Experience/Experience";
+import OurPartner from "../../OurPartner/OurPartner";
 
 const Home = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/chefs")
+    fetch("https://spicy-club-server.vercel.app/chefs")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
@@ -23,6 +25,8 @@ const Home = () => {
           <Chefs singleData={singleData} key={singleData.id}></Chefs>
         ))}
       </div>
+      <Experience></Experience>
+      <OurPartner></OurPartner>
     </div>
   );
 };

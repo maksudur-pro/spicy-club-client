@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const Recipe = ({ recipe }) => {
   const [bookmark, setBookmark] = useState(true);
-  const { recipe_name, ingredients, cooking_method, rating } = recipe;
+  const { img, recipe_name, ingredients, cooking_method, rating } = recipe;
 
   const handleBookmark = () => {
     if (bookmark) {
@@ -14,7 +14,7 @@ const Recipe = ({ recipe }) => {
     }
   };
   return (
-    <div className="card my-container w-96 bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow-xl">
       <div className="card-body">
         <div className="card-actions justify-end">
           <button onClick={handleBookmark} disabled={false}>
@@ -25,9 +25,20 @@ const Recipe = ({ recipe }) => {
             )}
           </button>
         </div>
-        <h4>{recipe_name}</h4>
-        <p className="p-0">Ingredients: {ingredients}</p>
-        <p>Cooking method: {cooking_method}</p>
+        <img src={img} alt="" className="rounded-2xl" />
+        <h4 className="font-bold text-xl">{recipe_name}</h4>
+        <p className="p-0">
+          <span className="text-lg font-semibold">Ingredients</span>
+          {ingredients.map((ingredient, index) => (
+            <li className="pl-4" key={index}>
+              {ingredient}
+            </li>
+          ))}
+        </p>
+        <p>
+          <span className="text-lg font-semibold">Cooking method:</span>{" "}
+          {cooking_method}
+        </p>
         <div className="flex items-center">
           <Rating
             readonly

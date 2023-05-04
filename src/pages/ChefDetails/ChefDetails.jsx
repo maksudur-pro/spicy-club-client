@@ -20,10 +20,10 @@ const ChefDetails = () => {
     <div className="my-container">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
-          <img src={picture} className="w-80 h-96" alt="Album" />
+          <img src={picture} className="h-full" alt="Album" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{name}</h2>
+          <h2 className="card-title text-red-500 text-2xl font-bold">{name}</h2>
           <p>
             {bio} <br />
             <span>Total recipe : {total_recipe}</span>
@@ -38,9 +38,9 @@ const ChefDetails = () => {
           </div>
         </div>
       </div>
-      <div className="grid lg:grid-cols-3 mt-4">
-        {recipes.map((recipe, index) => (
-          <Recipe recipe={recipe} key={index}></Recipe>
+      <div className="grid gap-3  lg:grid-cols-3 mt-4">
+        {recipes.map((recipe) => (
+          <Recipe recipe={recipe} key={recipe.category_id}></Recipe>
         ))}
       </div>
     </div>

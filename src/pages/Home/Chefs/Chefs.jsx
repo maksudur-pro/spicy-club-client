@@ -7,7 +7,11 @@ const Chefs = ({ singleData }) => {
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
-        <img src={picture} className="w-full h-56" alt="Shoes" />
+        <img
+          src={picture}
+          alt="Chef 1"
+          className="w-full h-64 object-cover rounded-lg mb-4"
+        />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
