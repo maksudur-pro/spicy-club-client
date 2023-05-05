@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
@@ -7,6 +7,10 @@ import Swal from "sweetalert2";
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -20,6 +24,7 @@ const Register = () => {
         const createdUser = result.user;
         form.reset();
         Swal.fire("Register Successfully!", " ", "success");
+        navigate(from, { replace: true });
         updateUserData(result.user, name, photo);
       })
       .catch((error) => {
