@@ -5,6 +5,8 @@ import Experience from "../../Experience/Experience";
 import OurPartner from "../../OurPartner/OurPartner";
 import { AuthContext } from "../../../providers/AuthProvider";
 import LazyLoad from "react-lazy-load";
+import HeroSection from "./HeroSection";
+import AboutUsSection from "../../AboutUsSection/AboutUsSection";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -35,8 +37,12 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
+      <HeroSection></HeroSection>
+      <Experience></Experience>
       <div className="my-container text-center mb-4">
-        <h1 className="text-4xl font-bold">Our Chefs</h1>
+        <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          Our Chefs
+        </h1>
         <p className="lg:text-xl">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
@@ -46,7 +52,7 @@ const Home = () => {
           <Chefs singleData={singleData} key={singleData.id}></Chefs>
         ))}
       </div>
-      <Experience></Experience>
+      <AboutUsSection></AboutUsSection>
       <OurPartner></OurPartner>
     </div>
   );
